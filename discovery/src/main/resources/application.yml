@@ -15,6 +15,9 @@ server:
   port: 8761
 
 eureka:
+  dashboard:
+    path: /dashboard/
+    enabled: true
   client:
     fetchRegistry: false
     registerWithEureka: false

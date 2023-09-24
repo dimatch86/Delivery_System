@@ -2,18 +2,21 @@ package ru.skillbox.authservice.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
-import ru.skillbox.authservice.dto.UserDto;
 import ru.skillbox.authservice.domain.User;
+import ru.skillbox.authservice.dto.UserDto;
 import ru.skillbox.authservice.repository.UserRepository;
 
 import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("/user")
 public class UserController {
 
@@ -21,10 +24,6 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
 
-    public UserController(UserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
-    }
 
     @Operation(summary = "Get user by name", security = @SecurityRequirement(name = "bearerAuth"))
     @GetMapping(value = "/{username}")
@@ -42,6 +41,7 @@ public class UserController {
 
     @Operation(summary = "Delete user by name", security = @SecurityRequirement(name = "bearerAuth"))
     @DeleteMapping(value = "/delete/{username}")
+    @Transactional
     public ResponseEntity<Void> deleteUser(@PathVariable String username) {
         userRepository.deleteByName(username);
         return ResponseEntity.ok().build();

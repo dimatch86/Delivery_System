@@ -8,12 +8,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import ru.skillbox.dto.StatusDto;
 import ru.skillbox.orderservice.domain.Order;
 import ru.skillbox.orderservice.domain.OrderDto;
-import ru.skillbox.orderservice.domain.StatusDto;
+
 import ru.skillbox.orderservice.repository.OrderRepository;
 import ru.skillbox.orderservice.service.OrderService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Slf4j
@@ -45,8 +48,8 @@ public class OrderController {
 
     @Operation(summary = "Add order and start delivery process for it", security = @SecurityRequirement(name = "bearerAuth"))
     @PostMapping("/order")
-    public ResponseEntity<?> addOrder(@RequestBody OrderDto input) {
-        return orderService.addOrder(input)
+    public ResponseEntity<?> addOrder(@RequestBody OrderDto input, HttpServletRequest request) {
+        return orderService.addOrder(input, request)
                 .map(order -> ResponseEntity.status(HttpStatus.CREATED).body(order))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());
     }

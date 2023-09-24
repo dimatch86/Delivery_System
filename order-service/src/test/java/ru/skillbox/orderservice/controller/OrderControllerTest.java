@@ -11,23 +11,25 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+
+import ru.skillbox.dto.OrderStatus;
+import ru.skillbox.dto.StatusDto;
 import ru.skillbox.orderservice.domain.Order;
 import ru.skillbox.orderservice.domain.OrderDto;
-import ru.skillbox.orderservice.domain.OrderStatus;
-import ru.skillbox.orderservice.domain.StatusDto;
+
 import ru.skillbox.orderservice.repository.OrderRepository;
 import ru.skillbox.orderservice.service.OrderService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
 import static org.hamcrest.Matchers.containsString;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.doNothing;
 import static org.mockito.Mockito.doThrow;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.patch;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -61,14 +63,14 @@ public class OrderControllerTest {
                 "Moscow, st.Taganskaya 150",
                 "Moscow, st.Tulskaya 24",
                 "Order #112",
-                1500L,
+
                 OrderStatus.REGISTERED
         );
         newOrder = new Order(
                 "Moscow, st.Taganskaya 150",
                 "Moscow, st.Dubininskaya 39",
                 "Order #342",
-                2450L,
+
                 OrderStatus.REGISTERED
         );
         orders = Collections.singletonList(order);
@@ -92,13 +94,13 @@ public class OrderControllerTest {
 
     @Test
     public void addOrder() throws Exception {
-        OrderDto orderDto = new OrderDto(
+        /*OrderDto orderDto = new OrderDto(
                 "Order #342",
                 "Moscow, st.Taganskaya 150",
                 "Moscow, st.Dubininskaya 39",
                 2450L
-        );
-        Mockito.when(orderService.addOrder(orderDto)).thenReturn(Optional.of(newOrder));
+        );*/
+        Mockito.when(orderService.addOrder(any(OrderDto.class), any(HttpServletRequest.class))).thenReturn(Optional.of(newOrder));
         mvc.perform(
                         post("/order")
                                 .accept(MediaType.APPLICATION_JSON)
