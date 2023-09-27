@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "19fb07fe-1d94-4b63-a840-f61e0dc36eb4",
+		"name": "payment-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "addMoney",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\":152.85}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/pay/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"pay",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "takeMoney",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"amount\":100}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/pay/take",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"pay",
+						"take"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getMyBalance",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1NTc2Mzc3LCJpYXQiOjE2OTU0ODk5Nzd9.yiTYsXI79idu99dPsaayds7P-3VaV3ii9_6ErSo_t8j5BiC0xNZFGJpvYJ9eOB6_6O-KCg0EHoAeDs1e9K6t7A",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/pay/balance",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"pay",
+						"balance"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

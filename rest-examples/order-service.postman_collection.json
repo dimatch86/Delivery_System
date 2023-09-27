@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "1aa0cdd4-fc94-4cd0-824a-daa2267c1449",
+		"name": "order-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjkzNjQ4MDMxLCJpYXQiOjE2OTM1NjE2MzF9._kNTmKtMhpk-5TNBfWt-y2UmobRn5nfQ9DvHjmHCc-96cWDrD0Ug4FcI88gQVMGg3_VdckhOqen434_MKYp5yg",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"new_order\",\r\n    \"departureAddress\":\"Moscow\",\r\n    \"destinationAddress\":\"Volgodonsk\",\r\n    \"cost\":22.25\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
