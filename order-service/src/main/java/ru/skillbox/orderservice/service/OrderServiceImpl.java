@@ -50,7 +50,7 @@ public class OrderServiceImpl implements OrderService {
                 user
         );
         newOrder.addStatusHistory(newOrder.getStatus(), ServiceName.ORDER_SERVICE, "Order created");
-        newOrder.addProductDetails(orderDto.getProductDetailsDto());
+        newOrder.addProductDetails(orderDto.getProductDetails());
         Order order = orderRepository.save(newOrder);
         OrderKafkaDto orderKafkaDto = KafkaOrderDtoMapper.toOrderKafkaDto(order);
         orderKafkaDto.setUserToken(request.getHeader(HttpHeaders.AUTHORIZATION));
@@ -74,7 +74,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private double calculateOrderCost(OrderDto orderDto) {
-        return orderDto.getProductDetailsDto()
+        return orderDto.getProductDetails()
                 .stream()
                 .map(productDetailsDto -> productDetailsDto.getCost() * productDetailsDto.getAmount())
                 .mapToDouble(Double::doubleValue)

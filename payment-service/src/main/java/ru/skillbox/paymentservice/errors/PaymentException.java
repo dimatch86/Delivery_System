@@ -1,4 +1,4 @@
-package ru.skillbox.paymentservice.controller;
+package ru.skillbox.paymentservice.errors;
 
 public class PaymentException extends RuntimeException {
 

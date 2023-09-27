@@ -45,4 +45,9 @@ public class Shipment {
         this.orderId = orderId;
         this.status = status;
     }
+
+    public Shipment(String departureAddress, String destinationAddress) {
+        this.departureAddress = departureAddress;
+        this.destinationAddress = destinationAddress;
+    }
 }

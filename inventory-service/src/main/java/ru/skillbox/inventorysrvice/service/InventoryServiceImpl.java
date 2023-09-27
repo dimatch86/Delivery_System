@@ -4,7 +4,7 @@ package ru.skillbox.inventorysrvice.service;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ru.skillbox.inventorysrvice.controller.ProductNotFoundException;
+import ru.skillbox.inventorysrvice.errors.ProductNotFoundException;
 import ru.skillbox.inventorysrvice.domain.Product;
 import ru.skillbox.inventorysrvice.domain.dto.ProductDto;
 import ru.skillbox.inventorysrvice.domain.dto.QuantityDto;
@@ -41,10 +41,9 @@ public class InventoryServiceImpl implements InventoryService {
     @Override
     @Transactional
     public Optional<Product> increaseProductQuantity(String productName, QuantityDto quantityDto) {
-        Product product = inventoryRepository.findProductByName(productName);
-        if (product == null) {
-            throw new ProductNotFoundException();
-        }
+        Product product = Optional.of(inventoryRepository.findProductByName(productName))
+                .orElseThrow(ProductNotFoundException::new);
+
         product.setQuantity(product.getQuantity() + quantityDto.getQuantity());
         inventoryRepository.save(product);
         return Optional.of(product);

@@ -10,7 +10,7 @@ import ru.skillbox.dto.OrderKafkaDto;
 import ru.skillbox.dto.OrderStatus;
 import ru.skillbox.dto.ServiceName;
 import ru.skillbox.dto.StatusDto;
-import ru.skillbox.paymentservice.controller.PaymentException;
+import ru.skillbox.paymentservice.errors.PaymentException;
 import ru.skillbox.paymentservice.domain.Payment;
 import ru.skillbox.paymentservice.domain.PaymentStatus;
 import ru.skillbox.paymentservice.domain.UserBalance;
@@ -65,13 +65,6 @@ public class PaymentConsumer {
         }
     }
 
-    private Payment orderDtoToPayment(OrderKafkaDto orderKafkaDto) {
-        return new Payment(orderKafkaDto.getOrderPrice(),
-                orderKafkaDto.getOrderId(),
-                LocalDateTime.now(),
-                PaymentStatus.APPROVED);
-    }
-
     private void checkAndUpdateUserBalance(String userName, double orderPrice) throws InterruptedException {
         Thread.sleep(paymentDuration);
         UserBalance userBalance = userBalanceRepository.findUserBalanceByUserName(userName);
@@ -82,5 +75,12 @@ public class PaymentConsumer {
         userBalance.setBalance(userBalance.getBalance() - orderPrice);
         userBalanceRepository.save(userBalance);
 
+    }
+
+    private Payment orderDtoToPayment(OrderKafkaDto orderKafkaDto) {
+        return new Payment(orderKafkaDto.getOrderPrice(),
+                orderKafkaDto.getOrderId(),
+                LocalDateTime.now(),
+                PaymentStatus.APPROVED);
     }
 }

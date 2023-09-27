@@ -1,4 +1,4 @@
-package ru.skillbox.inventorysrvice.controller;
+package ru.skillbox.inventorysrvice.errors;
 
 public class ProductNotFoundException extends RuntimeException {
 

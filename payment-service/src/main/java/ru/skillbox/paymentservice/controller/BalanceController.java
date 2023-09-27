@@ -8,15 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.skillbox.paymentservice.domain.UserBalance;
 import ru.skillbox.paymentservice.domain.dto.BalanceDto;
+import ru.skillbox.paymentservice.errors.BalanceNotFoundException;
 import ru.skillbox.paymentservice.service.UserBalanceService;
-import ru.skillbox.paymentservice.service.UserBalanceServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
-public class PaymentController {
+public class BalanceController {
 
     private final UserBalanceService userBalanceService;
 
@@ -32,7 +32,7 @@ public class PaymentController {
     public ResponseEntity<UserBalance> addMoney(@RequestBody @Valid BalanceDto balanceDto, HttpServletRequest request) {
 
         return userBalanceService.increaseUserBalance(balanceDto.getAmount(), request)
-                .map(userBalance -> ResponseEntity.status(HttpStatus.CREATED).body(userBalance))
+                .map(userBalance -> ResponseEntity.status(HttpStatus.OK).body(userBalance))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());
 
     }
@@ -42,7 +42,7 @@ public class PaymentController {
     public ResponseEntity<UserBalance> takeMoney(@RequestBody BalanceDto balanceDto, HttpServletRequest request) {
 
         return userBalanceService.decreaseUserBalance(balanceDto.getAmount(), request)
-                .map(userBalance -> ResponseEntity.status(HttpStatus.CREATED).body(userBalance))
+                .map(userBalance -> ResponseEntity.status(HttpStatus.OK).body(userBalance))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());
 
     }

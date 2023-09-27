@@ -7,6 +7,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.skillbox.dto.ErrorDto;
+import ru.skillbox.inventorysrvice.errors.ProductNotFoundException;
 
 import java.sql.SQLException;
 import java.time.LocalDateTime;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 
-    private final String UNIQUE_VIOLATION = "23505";
+    private static final String UNIQUE_VIOLATION = "23505";
 
     @ExceptionHandler(ProductNotFoundException.class)
     public ResponseEntity<ErrorDto> exceptionHandler(ProductNotFoundException ex) {

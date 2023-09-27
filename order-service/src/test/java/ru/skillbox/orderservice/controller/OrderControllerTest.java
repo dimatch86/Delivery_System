@@ -35,7 +35,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @ActiveProfiles("test")
 @WebMvcTest(OrderController.class)
-public class OrderControllerTest {
+class OrderControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -77,7 +77,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void listOrders() throws Exception {
+    void listOrders() throws Exception {
         Mockito.when(orderRepository.findAll()).thenReturn(orders);
         mvc.perform(get("/order"))
                 .andExpect(status().isOk())
@@ -85,7 +85,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void listOrder() throws Exception {
+    void listOrder() throws Exception {
         Mockito.when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
         mvc.perform(get("/order/1"))
                 .andExpect(status().isOk())
@@ -93,20 +93,17 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void addOrder() throws Exception {
-        /*OrderDto orderDto = new OrderDto(
-                "Order #342",
-                "Moscow, st.Taganskaya 150",
-                "Moscow, st.Dubininskaya 39",
-                2450L
-        );*/
+    void addOrder() throws Exception {
+
         Mockito.when(orderService.addOrder(any(OrderDto.class), any(HttpServletRequest.class))).thenReturn(Optional.of(newOrder));
         mvc.perform(
                         post("/order")
                                 .accept(MediaType.APPLICATION_JSON)
                                 .content(
                                         "{\"description\":\"Order #342\",\"departureAddress\":\"Moscow, st.Taganskaya 150\"," +
-                                                "\"destinationAddress\":\"Moscow, st.Dubininskaya 39\",\"cost\":2450}"
+                                                "\"destinationAddress\":\"Moscow, st.Dubininskaya 39\"," +
+                                                "\"productDetails\":[{\"name\":\"Milk\", \"cost\":10.0, \"amount\":2}," +
+                                                "{\"name\":\"Coffee\", \"cost\":15.0, \"amount\":2}]}}"
                                 )
                                 .contentType(MediaType.APPLICATION_JSON)
                 )
@@ -114,7 +111,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void updateOrderStatus() throws Exception {
+    void updateOrderStatus() throws Exception {
         StatusDto statusDto = new StatusDto(OrderStatus.PAID);
         doNothing().when(orderService).updateOrderStatus(1L, statusDto);
         mvc.perform(
@@ -127,7 +124,7 @@ public class OrderControllerTest {
     }
 
     @Test
-    public void updateOrderStatusWithError() throws Exception {
+    void updateOrderStatusWithError() throws Exception {
         StatusDto statusDto = new StatusDto(OrderStatus.PAID);
         doThrow(new RuntimeException()).when(orderService).updateOrderStatus(1L, statusDto);
         mvc.perform(

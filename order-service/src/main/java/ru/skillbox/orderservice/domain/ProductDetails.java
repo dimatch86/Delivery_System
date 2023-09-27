@@ -28,9 +28,4 @@ public class ProductDetails {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    public ProductDetails(String name, Double cost, Integer amount) {
-        this.name = name;
-        this.cost = cost;
-        this.amount = amount;
-    }
 }

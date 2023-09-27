@@ -17,6 +17,7 @@ import ru.skillbox.orderservice.repository.OrderRepository;
 import ru.skillbox.orderservice.service.OrderService;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import java.util.List;
 
 @Slf4j
@@ -48,7 +49,7 @@ public class OrderController {
 
     @Operation(summary = "Add order and start delivery process for it", security = @SecurityRequirement(name = "bearerAuth"))
     @PostMapping("/order")
-    public ResponseEntity<?> addOrder(@RequestBody OrderDto input, HttpServletRequest request) {
+    public ResponseEntity<?> addOrder(@RequestBody @Valid OrderDto input, HttpServletRequest request) {
         return orderService.addOrder(input, request)
                 .map(order -> ResponseEntity.status(HttpStatus.CREATED).body(order))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());

@@ -1,4 +1,4 @@
-package ru.skillbox.paymentservice.controller;
+package ru.skillbox.orderservice.controller;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -7,15 +7,14 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.skillbox.dto.ErrorDto;
-import ru.skillbox.paymentservice.errors.BalanceNotFoundException;
 
 import java.time.LocalDateTime;
 
 @ControllerAdvice
 public class ExceptionHandlerAdvice {
 
-    @ExceptionHandler(BalanceNotFoundException.class)
-    public ResponseEntity<ErrorDto> exceptionHandler(BalanceNotFoundException ex) {
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<ErrorDto> exceptionHandler(OrderNotFoundException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorDto(ex.getMessage(), LocalDateTime.now()));
@@ -29,7 +28,7 @@ public class ExceptionHandlerAdvice {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorDto> exceptionHandler1(MethodArgumentNotValidException ex) {
+    public ResponseEntity<ErrorDto> exceptionHandler(MethodArgumentNotValidException ex) {
         return ResponseEntity
                 .status(HttpStatus.BAD_REQUEST)
                 .body(new ErrorDto(ex.getMessage(), LocalDateTime.now()));

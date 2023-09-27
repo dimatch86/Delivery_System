@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import ru.skillbox.domain.DeliveryException;
+import ru.skillbox.errors.DeliveryException;
 import ru.skillbox.domain.Shipment;
 import ru.skillbox.domain.ShipmentStatus;
 import ru.skillbox.dto.*;
@@ -25,7 +25,6 @@ public class DeliveryConsumer {
 
     @Value("${delivery.duration}")
     private int deliveryDuration;
-
     @Value("${delivery.percent_of_failure}")
     private double percentOfFailure;
     private final RestTemplate restTemplate;
@@ -53,16 +52,16 @@ public class DeliveryConsumer {
         } catch (InterruptedException e) {
             orderStatus = OrderStatus.UNEXPECTED_FAILURE;
             log.warn("Process finished with error {}" , e.getMessage());
+            deliveryKafkaService.reverseInventory(new InventoryCompensationDto(orderKafkaDto.getUserName(), orderKafkaDto.getOrderPrice(), orderKafkaDto.getProductDetails()));
             Thread.currentThread().interrupt();
-        } finally {
 
+        } finally {
             shipmentRepository.save(shipment);
             String message = String.format("Shipment of order № %s finished with status %s", orderKafkaDto.getOrderId(), orderStatus);
             RestUtil.createRequestForOrderStatusUpdating(restTemplate,
                     new StatusDto(orderStatus, ServiceName.DELIVERY_SERVICE, message),
                     orderKafkaDto.getOrderId(), orderKafkaDto.getUserToken());
         }
-
     }
 
     private boolean isDeliverySuccess() {

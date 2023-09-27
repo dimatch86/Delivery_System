@@ -3,6 +3,7 @@ package ru.skillbox.inventorysrvice.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,13 +17,14 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class InventoryController {
 
     private final InventoryService inventoryService;
 
     @Operation(summary = "List all products in delivery system", security = @SecurityRequirement(name = "bearerAuth"))
     @GetMapping("/product")
-    public List<Product> listOrders() {
+    public List<Product> listProducts() {
         return inventoryService.getProducts();
     }
 
@@ -31,7 +33,7 @@ public class InventoryController {
     public ResponseEntity<Product> addProduct(@RequestBody @Valid ProductDto productDto) {
 
         return inventoryService.addProduct(productDto)
-                .map(product -> ResponseEntity.status(HttpStatus.CREATED).body(product))
+                .map(product -> ResponseEntity.status(HttpStatus.OK).body(product))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.EXPECTATION_FAILED).build());
     }
 
@@ -40,7 +42,7 @@ public class InventoryController {
     public ResponseEntity<Product> increaseProductQuantity(@PathVariable String productName, @RequestBody @Valid QuantityDto quantityDto) {
 
         return inventoryService.increaseProductQuantity(productName, quantityDto)
-                .map(product -> ResponseEntity.status(HttpStatus.CREATED).body(product))
+                .map(product -> ResponseEntity.status(HttpStatus.OK).body(product))
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_MODIFIED).build());
     }
 }
