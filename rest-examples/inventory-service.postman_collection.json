@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0ODUyODcwLCJpYXQiOjE2OTQ3NjY0NzB9.BbXVYOBJdVRlhdFT_Fx2xmdpi7xZ6EXjIbDuhfpVo3-xuxf26vt3RrZZGmbdFYuQjN-7rIz2k4LYO8yHjdgHow",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"milk\",\r\n    \"price\":175.25,\r\n    \"quantity\":10\r\n}",
+					"raw": "{\r\n    \"name\":\"coffee\",\r\n    \"quantity\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,13 +48,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0OTQyNzY3LCJpYXQiOjE2OTQ4NTYzNjd9.9RTxByM0HR8oFgp9QZJMpWNcuWwuXzGLmWpysXid1JAKqXzE4y1CsOvEbz3koWH6H3JlucOKmLRB_NKmpXsZ4Q",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"quantity\":15\r\n}",
+					"raw": "{\r\n    \"quantity\": 10\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

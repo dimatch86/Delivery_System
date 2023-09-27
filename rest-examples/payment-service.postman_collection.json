@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"amount\":152.85}",
+					"raw": "{\"amount\": 1000}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -48,13 +48,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1NTc2Mzc3LCJpYXQiOjE2OTU0ODk5Nzd9.yiTYsXI79idu99dPsaayds7P-3VaV3ii9_6ErSo_t8j5BiC0xNZFGJpvYJ9eOB6_6O-KCg0EHoAeDs1e9K6t7A",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"amount\":100}",
+					"raw": "{\"amount\":2000}",
 					"options": {
 						"raw": {
 							"language": "json"

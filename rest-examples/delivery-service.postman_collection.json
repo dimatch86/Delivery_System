@@ -13,7 +13,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1MzA5OTMzLCJpYXQiOjE2OTUyMjM1MzN9.gYIi2vyzEK8Or6_0bC9iPOpDU_sw2JPiV0TDc02aOmxQnobgYc9PLKnveP2tYVsjpkIao9zZVTiOONUkan9hDw",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1NTc2Mzc3LCJpYXQiOjE2OTU0ODk5Nzd9.yiTYsXI79idu99dPsaayds7P-3VaV3ii9_6ErSo_t8j5BiC0xNZFGJpvYJ9eOB6_6O-KCg0EHoAeDs1e9K6t7A",
 						"type": "text"
 					}
 				],
@@ -44,7 +44,7 @@
 					}
 				],
 				"url": {
-					"raw": "http://localhost:9090/ship/shipment/1",
+					"raw": "http://localhost:9090/ship/shipment/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -53,7 +53,7 @@
 					"path": [
 						"ship",
 						"shipment",
-						"1"
+						"3"
 					]
 				}
 			},

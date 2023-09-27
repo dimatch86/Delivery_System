@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Boris\",\r\n    \"password\":\"Shima555$\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Carl\",\r\n    \"password\":\"Carl543$\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -43,7 +43,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Carl\",\r\n\"password\":\"Shima555$\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Carl\",\r\n    \"password\":\"Carl543$\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -73,17 +73,17 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjkzNjQ4MDMxLCJpYXQiOjE2OTM1NjE2MzF9._kNTmKtMhpk-5TNBfWt-y2UmobRn5nfQ9DvHjmHCc-96cWDrD0Ug4FcI88gQVMGg3_VdckhOqen434_MKYp5yg",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mzc0MDU2LCJpYXQiOjE2OTQyODc2NTZ9.obByyliog94I72OEsBKHjtmVxd5SeByxMD5hYbtDNWLFV8sLBLRO-dBh_fr4ubrIYqkhJBiCtKmRpHUMsloEFw",
 						"type": "text"
 					}
 				],
 				"url": {
-					"raw": "http://localhost:8083/auth/user/",
+					"raw": "http://localhost:9090/auth/user/",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8083",
+					"port": "9090",
 					"path": [
 						"auth",
 						"user",

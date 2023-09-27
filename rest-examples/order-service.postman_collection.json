@@ -13,13 +13,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjkzNjQ4MDMxLCJpYXQiOjE2OTM1NjE2MzF9._kNTmKtMhpk-5TNBfWt-y2UmobRn5nfQ9DvHjmHCc-96cWDrD0Ug4FcI88gQVMGg3_VdckhOqen434_MKYp5yg",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"description\":\"new_order\",\r\n    \"departureAddress\":\"Moscow\",\r\n    \"destinationAddress\":\"Volgodonsk\",\r\n    \"cost\":22.25\r\n}",
+					"raw": "{\r\n    \"description\":\"new_order\",\r\n    \"departureAddress\":\"Moscow\",\r\n    \"destinationAddress\":\"Volgodonsk\",\r\n    \"productDetails\":[{\r\n        \"name\": \"milk\",\r\n        \"cost\":5.0,\r\n        \"amount\": 2\r\n    },\r\n    {\r\n        \"name\": \"coffee\",\r\n        \"cost\":10.25,\r\n        \"amount\":2\r\n\r\n    }\r\n    ]\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -27,12 +27,12 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/api/order",
+					"raw": "http://localhost:9090/api/order",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
-					"port": "8080",
+					"port": "9090",
 					"path": [
 						"api",
 						"order"
