@@ -2,7 +2,7 @@ spring:
   application:
     name: auth-service
   datasource:
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/auth_user_db}
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5433/auth_user_db}
     username: ${DATABASE_USER:postgre_user}
     password: ${DATABASE_PASSWORD:postgre_secret_password}
     driver-class-name: org.postgresql.Driver
@@ -14,7 +14,7 @@ spring:
           use_jdbc_metadata_defaults: false
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     hibernate:
-      ddl-auto: update
+      ddl-auto: create
       format_sql: true
     show-sql: true
 

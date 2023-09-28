@@ -5,15 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
+import ru.skillbox.dto.OrderStatus;
+import ru.skillbox.dto.ServiceName;
 import ru.skillbox.orderservice.domain.Order;
-import ru.skillbox.orderservice.domain.OrderStatus;
-import ru.skillbox.orderservice.domain.ServiceName;
+
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ActiveProfiles("test")
 @DataJpaTest
-public class OrderRepositoryTest {
+class OrderRepositoryTest {
 
     @Autowired
     private TestEntityManager entityManager;
@@ -27,7 +28,7 @@ public class OrderRepositoryTest {
                 "Moscow, st.Taganskaya 150",
                 "Moscow, st.Tulskaya 24",
                 "Order #112",
-                1500L,
+
                 OrderStatus.REGISTERED
         );
         order.addStatusHistory(OrderStatus.REGISTERED, ServiceName.ORDER_SERVICE, "Order created");

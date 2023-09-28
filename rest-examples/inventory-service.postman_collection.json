@@ -1,0 +1,81 @@
+{
+	"info": {
+		"_postman_id": "8d636c76-0d81-4488-9ba5-221370943798",
+		"name": "inventory-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "addGoods",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"coffee\",\r\n    \"quantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/inv/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"inv",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addQuantity",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 10\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/inv/add/coffee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"inv",
+						"add",
+						"coffee"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

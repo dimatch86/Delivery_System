@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "1aa0cdd4-fc94-4cd0-824a-daa2267c1449",
+		"name": "order-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "CreateOrder",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk1ODg1ODc2LCJpYXQiOjE2OTU3OTk0NzZ9.ORgMCFWWyRAwsrYSP4G22pSTB_k4atXDHx45AhIwJ4jvemjfVE7NSF00cU0GAKuABY4BgWPH8nq-Xrt3Pv3xIw",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"description\":\"new_order\",\r\n    \"departureAddress\":\"Moscow\",\r\n    \"destinationAddress\":\"Volgodonsk\",\r\n    \"productDetails\":[{\r\n        \"name\": \"milk\",\r\n        \"cost\":5.0,\r\n        \"amount\": 2\r\n    },\r\n    {\r\n        \"name\": \"coffee\",\r\n        \"cost\":10.25,\r\n        \"amount\":2\r\n\r\n    }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:9090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetOrders",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJDYXJsIiwiaXNzIjoiaHR0cDovL3NraWxsYm94LnJ1IiwiZXhwIjoxNjk0Mjc1Mjg2LCJpYXQiOjE2OTQxODg4ODZ9.vAfVxCcG2BGDjfh1A3UzaCxaEsvCmCjiW3thb6Buk9MwqeOxsPCQo-Elsf4o7g7-81LhjUgH4b3ZO0QnpcV0Aw",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:9090/api/order",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "9090",
+					"path": [
+						"api",
+						"order"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

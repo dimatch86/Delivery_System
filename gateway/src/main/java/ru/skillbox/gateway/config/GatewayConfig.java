@@ -26,9 +26,24 @@ public class GatewayConfig {
                                 .uri("lb://ORDER-SERVICE")
                 )
                 .route(
-                        "auth_route", r -> r.path("/auth/**")
+                        "auth-service", r -> r.path("/auth/**")
                                 .filters(f -> f.filter(filter))
-                                .uri("lb://AUTH-SERVICE")
+                                .uri("lb://auth-service")
+                )
+                .route(
+                        "payment-service", r -> r.path("/pay/**")
+                                .filters(f -> f.filter(filter))
+                                .uri("lb://payment-service")
+                )
+                .route(
+                        "inventory-service", r -> r.path("/inv/**")
+                                .filters(f -> f.filter(filter))
+                                .uri("lb://inventory-service")
+                )
+                .route(
+                        "delivery-service", r -> r.path("/ship/**")
+                                .filters(f -> f.filter(filter))
+                                .uri("lb://delivery-service")
                 )
                 .build();
     }

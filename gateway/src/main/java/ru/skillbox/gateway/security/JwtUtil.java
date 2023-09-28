@@ -28,6 +28,7 @@ public class JwtUtil {
 
     private boolean isTokenExpired(String tokenString) {
         String jwtToken = tokenString.replace(TOKEN_PREFIX, "");
+        System.out.println(jwtToken);
         boolean result = true;
         try {
             result = getAllClaimsFromToken(jwtToken)
