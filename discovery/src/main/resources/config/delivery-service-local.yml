@@ -34,6 +34,13 @@ management:
       show-details: always
     metrics:
       enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
 
 eureka:
   client:

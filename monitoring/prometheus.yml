@@ -1,0 +1,30 @@
+scrape_configs:
+  - job_name: 'sample_monitoring_order-service'
+    scrape_interval: 5s
+    metrics_path: '/api/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8080']
+
+  - job_name: 'sample_monitoring_payment-service'
+    scrape_interval: 5s
+    metrics_path: '/pay/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8089']
+
+  - job_name: 'sample_monitoring_inventory-service'
+    scrape_interval: 5s
+    metrics_path: '/inv/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8085']
+
+  - job_name: 'sample_monitoring_delivery-service'
+    scrape_interval: 5s
+    metrics_path: '/ship/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8086']
+
+  - job_name: 'sample_monitoring_auth-service'
+    scrape_interval: 5s
+    metrics_path: '/auth/actuator/prometheus'
+    static_configs:
+      - targets: ['host.docker.internal:8083']
