@@ -1,13 +1,13 @@
 version: '2.2'
 services:
   discovery:
-    image: delivery/discovery:0.0.1-SNAPSHOT
+    image: dimatch86/discovery:0.0.1-SNAPSHOT
     ports:
       - "8761:8761"
     restart: always
 
   auth-service:
-    image: delivery/auth-service:0.0.1-SNAPSHOT
+    image: dimatch86/auth-service:0.0.1-SNAPSHOT
     ports:
       - "8083:8083"
     environment:
@@ -21,7 +21,7 @@ services:
       - discovery
 
   order-service:
-    image: delivery/order:0.0.1-SNAPSHOT
+    image: dimatch86/order-service:0.0.1-SNAPSHOT
     ports:
       - "8080:8080"
     environment:
@@ -30,12 +30,58 @@ services:
       - DATABASE_URL=jdbc:postgresql://psql:5432/order_db
       - DATABASE_USER=postgre_user
       - DATABASE_PASSWORD=postgre_secret_password
+      - KAFKA_BOOTSTRAP_SERVERS=host.docker.internal:9092
+    restart: always
+    depends_on:
+      - discovery
+
+  payment-service:
+    image: dimatch86/payment-service:0.0.1-SNAPSHOT
+    ports:
+      - "8089:8089"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/payment_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+      - KAFKA_BOOTSTRAP_SERVERS=host.docker.internal:9092
+    restart: always
+    depends_on:
+      - discovery
+
+  inventory-service:
+    image: dimatch86/inventory-service:0.0.1-SNAPSHOT
+    ports:
+      - "8085:8085"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/inventory_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+      - KAFKA_BOOTSTRAP_SERVERS=host.docker.internal:9092
+    restart: always
+    depends_on:
+      - discovery
+
+  delivery-service:
+    image: dimatch86/delivery-service:0.0.1-SNAPSHOT
+    ports:
+      - "8086:8086"
+    environment:
+      - CONFIG_URI=http://discovery:8761
+      - EUREKA_URI=http://discovery:8761/eureka
+      - DATABASE_URL=jdbc:postgresql://psql:5432/delivery_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_secret_password
+      - KAFKA_BOOTSTRAP_SERVERS=host.docker.internal:9092
     restart: always
     depends_on:
       - discovery
 
   gateway:
-    image: delivery/gateway:0.0.1-SNAPSHOT
+    image: dimatch86/gateway:0.0.1-SNAPSHOT
     ports:
       - "9090:9090"
     environment:
@@ -46,3 +92,6 @@ services:
       - discovery
       - auth-service
       - order-service
+      - payment-service
+      - inventory-service
+      - delivery-service

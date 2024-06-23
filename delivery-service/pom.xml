@@ -123,7 +123,8 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
                 <configuration>
-                    <repository>delivery/delivery</repository>
+                    <repository>dimatch86/${project.artifactId}</repository>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                 </configuration>
             </plugin>
         </plugins>
