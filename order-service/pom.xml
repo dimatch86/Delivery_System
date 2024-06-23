@@ -94,7 +94,6 @@
             <groupId>ru.skillbox</groupId>
             <artifactId>common-dtos</artifactId>
             <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
         </dependency>
     </dependencies>
 
@@ -118,7 +117,8 @@
                 <artifactId>dockerfile-maven-plugin</artifactId>
                 <version>1.4.13</version>
                 <configuration>
-                    <repository>delivery/order</repository>
+                    <repository>dimatch86/${project.artifactId}</repository>
+                    <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                 </configuration>
             </plugin>
         </plugins>

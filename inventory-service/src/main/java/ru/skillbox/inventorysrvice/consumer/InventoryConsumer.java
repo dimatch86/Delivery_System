@@ -72,5 +72,6 @@ public class InventoryConsumer {
         products.forEach((product, quantity) ->
                 product.setQuantity(product.getQuantity() - quantity));
         inventoryRepository.saveAll(products.keySet());
+        products.clear();
     }
 }
