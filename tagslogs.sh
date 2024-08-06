@@ -9,6 +9,15 @@ get_tags_local() {
     docker image list | grep "^${image_name}" | awk -F' *' '{print $2}'
 }
 
+get_image_by_name_tag() {
+  resp="$(docker images -q "${image_name}:${required_tag}")"
+  echo "${resp}"
+}
+
+if [ "$(get_image_by_name_tag)" ]; then
+            echo "!!!!"
+        fi
+
 get_docker_hub_tags() {
     local tags=()
 
